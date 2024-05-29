@@ -17,7 +17,7 @@
     <form th:action="@{/forms/select}" method="post">
         <div th:each="appForm : ${matchingApplications}">
             <input type="radio" name="selectedId" th:value="${appForm.id}" />
-            <label th:text="${appForm.availableApartment.rooms} + ' кімн, ' + ${appForm.availableApartment.area} + ' м², ' + ${appForm.availableApartment.floor} + ' поверх, ' + ${appForm.availableApartment.district} + ' - ' + ${appForm.surname} + ' ' + ${appForm.initials}"></label>
+            <label th:text="${appForm.availableApartment.rooms} + ' кімн, ' + ${appForm.availableApartment.area} + ' м², ' + ${appForm.availableApartment.floor} + ' поверх, ' + ' район: ' + ${appForm.availableApartment.district} + ' - ' + ${appForm.surname} + ' ' + ${appForm.initials}"></label>
         </div>
         <div>
             <input type="hidden" th:field="*{newApplication.id}" />
