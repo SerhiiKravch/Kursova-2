@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Наявні квартири</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+
+        <a th:href="@{/}">Меню</a>
+
+        <a th:href="@{/forms/new}">Введення заявки</a>
+
+        <a th:href="@{/forms}">Перегляд заявок</a>
+
+        <a th:href="@{/apartments/new}">Додавання наявної квартири</a>
+
+    </nav>
+
+</header>
+
+<div class="content">
+
+    <h1>Наявні квартири</h1>
+
+    <table>
+
+        <tr>
+
+            <th>Кількість кімнат</th>
+
+            <th>Площа</th>
+
+            <th>Поверх</th>
+
+            <th>Район</th>
+
+        </tr>
+
+        <tr th:each="apartment : ${apartments}">
+
+            <td th:text="${apartment.rooms}"></td>
+
+            <td th:text="${apartment.area}"></td>
+
+            <td th:text="${apartment.floor}"></td>
+
+            <td th:text="${apartment.district}"></td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+
+</html>

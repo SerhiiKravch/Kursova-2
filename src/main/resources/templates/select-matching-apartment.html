@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Вибір відповідної квартири</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+    <nav>
+        <a th:href="@{/}">Меню</a>
+        <a th:href="@{/forms}">Перегляд заявок</a>
+    </nav>
+</header>
+<div class="content">
+    <h1>Вибір відповідної квартири</h1>
+    <p>Будь ласка, оберіть одну з підходящих квартир:</p>
+    <form th:action="@{/forms/select}" method="post">
+        <div th:each="appForm : ${matchingApplications}">
+            <input type="radio" name="selectedId" th:value="${appForm.id}" />
+            <label th:text="${appForm.availableApartment.rooms} + ' кімн, ' + ${appForm.availableApartment.area} + ' м², ' + ${appForm.availableApartment.floor} + ' поверх, ' + ${appForm.availableApartment.district} + ' - ' + ${appForm.surname} + ' ' + ${appForm.initials}"></label>
+        </div>
+        <div>
+            <input type="hidden" th:field="*{newApplication.id}" />
+            <button type="submit">Обрати</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

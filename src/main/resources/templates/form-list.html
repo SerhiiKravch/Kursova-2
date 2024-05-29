@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Заявки на обмін</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+    <nav>
+        <a th:href="@{/}">Меню</a>
+        <a th:href="@{/forms/new}">Введення заявки</a>
+    </nav>
+</header>
+<div class="content">
+    <h1>Заявки на обмін</h1>
+    <table>
+        <tr>
+            <th>Прізвище</th>
+            <th>Ініціали</th>
+            <th>Бажана квартира</th>
+            <th>Наявна квартира</th>
+        </tr>
+        <tr th:each="form : ${applications}">
+            <td th:text="${form.surname}"></td>
+            <td th:text="${form.initials}"></td>
+            <td>
+                <span th:if="${form.desiredApartment != null}">
+                    Кімнат: <span th:text="${form.desiredApartment.rooms}"></span>,
+                    Площа: <span th:text="${form.desiredApartment.area}"></span> м<sup>2</sup>,
+                    Поверх: <span th:text="${form.desiredApartment.floor}"></span>,
+                    Район: <span th:text="${form.desiredApartment.district}"></span>
+                </span>
+                <span th:unless="${form.desiredApartment != null}">
+                    Немає даних
+                </span>
+            </td>
+            <td>
+                <span th:if="${form.availableApartment != null}">
+                    Кімнат: <span th:text="${form.availableApartment.rooms}"></span>,
+                    Площа: <span th:text="${form.availableApartment.area}"></span> м<sup>2</sup>,
+                    Поверх: <span th:text="${form.availableApartment.floor}"></span>,
+                    Район: <span th:text="${form.availableApartment.district}"></span>
+                </span>
+                <span th:unless="${form.availableApartment != null}">
+                    Немає даних
+                </span>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

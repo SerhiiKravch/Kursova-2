@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Додати заявку</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header>
+    <nav>
+        <a th:href="@{/}">Меню</a>
+        <a th:href="@{/forms}">Перегляд заявок</a>
+    </nav>
+</header>
+<div class="content">
+    <h1>Додати нову заявку</h1>
+    <form th:action="@{/forms/new}" th:object="${applicationForm}" method="post">
+        <div>
+            <label for="surname">Прізвище:</label>
+            <input type="text" id="surname" th:field="*{surname}" required/>
+        </div>
+        <div>
+            <label for="initials">Ініціали:</label>
+            <input type="text" id="initials" th:field="*{initials}" required/>
+        </div>
+        <h3>Бажана квартира</h3>
+        <div>
+            <label for="desiredRooms">Кількість кімнат:</label>
+            <input type="number" id="desiredRooms" th:field="*{desiredApartment.rooms}" required/>
+        </div>
+        <div>
+            <label for="desiredArea">Площа (м²):</label>
+            <input type="number" id="desiredArea" th:field="*{desiredApartment.area}" required/>
+        </div>
+        <div>
+            <label for="desiredFloor">Поверх:</label>
+            <input type="number" id="desiredFloor" th:field="*{desiredApartment.floor}" required/>
+        </div>
+        <div>
+            <label for="desiredDistrict">Район:</label>
+            <input type="text" id="desiredDistrict" th:field="*{desiredApartment.district}" required/>
+        </div>
+        <h3>Маєте квартиру для обміну</h3>
+        <div>
+            <label for="availableRooms">Кількість кімнат:</label>
+            <input type="number" id="availableRooms" th:field="*{availableApartment.rooms}" required/>
+        </div>
+        <div>
+            <label for="availableArea">Площа (м²):</label>
+            <input type="number" id="availableArea" th:field="*{availableApartment.area}" required/>
+        </div>
+        <div>
+            <label for="availableFloor">Поверх:</label>
+            <input type="number" id="availableFloor" th:field="*{availableApartment.floor}" required/>
+        </div>
+        <div>
+            <label for="availableDistrict">Район:</label>
+            <input type="text" id="availableDistrict" th:field="*{availableApartment.district}" required/>
+        </div>
+        <div>
+            <button type="submit">Додати заявку</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

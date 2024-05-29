@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Додавання наявної квартири</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+
+        <a th:href="@{/}">Меню</a>
+
+        <a th:href="@{/forms}">Перегляд заявок</a>
+
+        <a th:href="@{/forms/new}">Введення заявки</a>
+
+        <a th:href="@{/apartments}">Перегляд наявних квартир</a>
+
+    </nav>
+
+</header>
+
+<div class="content">
+
+    <h1>Додавання наявної квартири</h1>
+
+    <form method="post" th:action="@{/apartments/new}" th:object="${existingApartment}">
+
+        <div>
+
+            <label for="rooms">Кількість кімнат:</label>
+
+            <input type="number" id="rooms" th:field="*{rooms}" required/>
+
+        </div>
+
+        <div>
+
+            <label for="area">Площа:</label>
+
+            <input type="number" step="0.1" id="area" th:field="*{area}" required/>
+
+        </div>
+
+        <div>
+
+            <label for="floor">Поверх:</label>
+
+            <input type="number" id="floor" th:field="*{floor}" required/>
+
+        </div>
+
+        <div>
+
+            <label for="district">Район:</label>
+
+            <input type="text" id="district" th:field="*{district}" required/>
+
+        </div>
+
+        <div>
+
+            <button type="submit">Додати квартиру</button>
+
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>
